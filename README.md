@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Added daily expenses events 
 
-Things you may want to cover:
-
-* Ruby version: 2+
-
-* Rails version: 5+
+2. Generated monthly report showing to who paid whom the expenses at the end of the month 
