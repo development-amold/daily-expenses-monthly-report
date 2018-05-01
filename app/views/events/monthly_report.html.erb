@@ -1,0 +1,74 @@
+<!--
+<div class="page-header">
+  <h1>Monthy Report</h1>
+</div>
+<% @monthly_reports.each do |month_date,rep_data| %>
+  <dl class="dl-horizontal">
+    <dt>
+      <stro
+        ng><%= month_date.strftime("%B-%Y") %></strong>
+      <% rep_data.each do |data| %>
+        <dd> 
+          <strong><%= data.event_type.name %></strong>
+        </dd> 
+        <dd>
+          <%= data.total_amount %>
+        </dd>
+        <% data.billpaidusers.each do |bill_obj| %>
+          <dd>
+            <%= bill_obj.user.name %> Paid Rs.<%= bill_obj.paid_amt  %>
+          </dd>
+        <% end %>
+        <br>
+      <% end %>      
+    </dt>  
+  </dl>
+  <hr>
+<% end %>
+-->
+
+<div class="page-header">
+  <h1>Monthly Report</h1>
+</div>
+<% @monthly_reports.each do |month_date,rep_data| %>
+  <dl class="dl-horizontal">
+    <dt>
+      <strong><%= month_date.strftime("%B-%Y") %></strong>
+      <% rep_data.each do |data| %>
+        <dd> 
+          <strong><%= data.event_type.name %></strong>
+        </dd> 
+        <dd>
+          <strong>Total:</strong>&nbsp;<%= data.total_amount %>
+        </dd>
+        <% contri = data.total_amount/data.billpaidusers.count %>
+        <% user_hash_pos = Hash.new %>
+        <% user_hash_neg = Hash.new %>
+        <% data.billpaidusers.each do |bill_obj| %>
+          <dd>
+            <%= bill_obj.user.name %> Paid Rs.<%= bill_obj.paid_amt  %>
+          </dd>
+          <% if contri > bill_obj.paid_amt
+            user_hash_pos["#{bill_obj.user.name}"] = contri - bill_obj.paid_amt
+          else
+            user_hash_neg["#{bill_obj.user.name}"] = bill_obj.paid_amt - contri
+          end %>
+        <% end %>
+        <br>
+        <% user_hash_pos.each do |k,v| %>
+          <% user_hash_neg.each do |k1,v1| %>
+            <% if v1 > contri
+              paid_val = v 
+            else
+              paid_val = v1
+            end %>
+            <dd><%= k %> Paid <%= paid_val %> to <%= k1 %></dd>
+          <% end %> 
+        <% end %>
+        ----------------------------------------------------------------
+        
+      <% end %>      
+    </dt>  
+  </dl>
+  <hr>
+<% end %>
