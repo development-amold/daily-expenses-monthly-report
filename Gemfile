@@ -22,6 +22,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :production do 
+	gem 'pg'
+end
+
 # gem "therubyracer"
 gem 'therubyracer', git: 'https://github.com/cowboyd/therubyracer.git'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
