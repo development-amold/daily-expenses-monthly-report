@@ -25,11 +25,13 @@ group :development do
 end
 
 group :production do 
-	gem 'pg'
+	# gem 'pg', '~> 0.18.2'
 end
 
 # gem "therubyracer"
 gem 'therubyracer', git: 'https://github.com/cowboyd/therubyracer.git'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "nested_form"
+
+ruby "2.5.0"
