@@ -195,7 +195,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   nested_form
-  pg(~> 0.18.2)
+  pg
   puma (~> 3.0)
   rails (~> 5.0.6)
   sass-rails (~> 5.0)
